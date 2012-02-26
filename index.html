@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bernard Constant - One in 8 Million Emulator</title>
+    <style>      
+      body{
+        background-color: white;
+        color: black;
+      }
+      #subtitlediv{
+        position: absolute; 
+        bottom: 0;
+        width: 100%;
+        align: center;
+        z-index: +1;
+        background:white;
+      }
+      #media_1{
+        width: 100%;
+      }
+      #imagediv{
+        align: center;
+        position: relative;
+        width: 100%;
+        z-index: -1;
+      }
+    </style>
+    
+    <script src="../../../scripts/popcorn-js/popcorn.js"></script>
+    <script type="text/javascript" src="../../../scripts/popcorn-js/players/soundcloud/popcorn.soundcloud.js"></script>
+    
+    <!-- Plugins for demo purposes -->
+    <script src="../../../scripts/popcorn-js/plugins/footnote/popcorn.footnote.js"></script>
+    <script src="../../../scripts/popcorn-js/plugins/flickr/popcorn.flickr.js"></script>
+    <script src="../../../scripts/popcorn-js/plugins/attribution/popcorn.attribution.js"></script>
+    <script src="../../../scripts/popcorn-js/plugins/webpage/popcorn.webpage.js"></script>
+    <script src="../../../scripts/popcorn-js/plugins/googlefeed/popcorn.googlefeed.js"></script>
+    <script src="../../../scripts/popcorn-js/plugins/image/popcorn.image.js"></script>
+    <script src="../../../scripts/popcorn-js/plugins/subtitle/popcorn.subtitle.js"></script>
+    <script src="../../../scripts/popcorn-js/plugins/twitter/popcorn.twitter.js"></script>
+    
+    <script type="text/javascript">
+      //On document ready
+      document.addEventListener( "DOMContentLoaded", function() {
+        var popcorn;
+        
+        document.getElementById( "btnPlay" ).addEventListener( "click", function() {
+          popcorn.play();
+        }, false);
+        
+        document.getElementById( "btnPause" ).addEventListener( "click", function() {
+          popcorn.pause();
+        }, false);
+        
+        document.getElementById( "btnSeek" ).addEventListener( "click", function() {
+          popcorn.currentTime( 30 );
+        }, false);
+        
+        document.getElementById( "btnVolume" ).addEventListener( "click", function() {
+          if ( popcorn.volume() >= 0.5 ) {
+            popcorn.volume( popcorn.volume()/2 );
+            this.innerHTML = "Double Volume";
+          } else {
+            popcorn.volume( popcorn.volume()*2 );
+            this.innerHTML = "Halve Volume";
+          }
+        }, false);
+        
+        document.getElementById( "btnMute" ).addEventListener( "click", function() {
+          popcorn.mute();
+        }, false);
+        
+        popcorn = Popcorn( Popcorn.soundcloud( "media_1", "http://soundcloud.com/johntynan/bernard-constance-draft", {
+          width: "50%",
+          /*
+            This demo contains an api key used for retrieving comments from Soundcloud's API
+            It is to be used for demonstration purposes only, and for only this demo
+          */
+          api: {
+            key: "PRaNFlda6Bhf5utPjUsptg",
+            commentdiv: "commentDisplay"/*,
+            commentformat: (function() {
+              var count = 0;
+              
+              return function( comment ) {
+                return "<div>Comment # " + ( count++ ) + "<br />"
+                        + "<em>" + comment.user.name + "</em>: " + comment.text +"</div>";
+              }
+            })()*/
+          }
+        }) );
+        
+        popcorn.listen( "load", function() {
+          
+          document.getElementById( "media_duration" ).innerHTML = popcorn.duration();
+          document.getElementById( "media_volume" ).innerHTML = popcorn.volume();
+          document.getElementById( "media_currentTime" ).innerHTML = popcorn.currentTime();
+          document.getElementById( "media_readyState" ).innerHTML = popcorn.video.readyState;
+          
+          popcorn.listen( "timeupdate", function() {
+            document.getElementById( "media_currentTime" ).innerHTML = popcorn.currentTime();
+          });
+          
+          popcorn.video.addEventListener( "readystatechange", function() {
+            document.getElementById( "media_readyState" ).innerHTML = popcorn.video.readyState;
+          });
+          
+          popcorn.listen( "volumechange", function() {
+            document.getElementById( "media_volume" ).innerHTML = popcorn.volume();
+          });
+          
+          popcorn.trigger( "play" );
+        });
+        
+        // Empty for the purposes of allowing popcorn.trigger("play");
+        popcorn.listen( "play", function() {
+        
+        });
+        popcorn.subtitle({
+          start: 0, // seconds
+          end: 20, // seconds
+          text: 'Watch this space for English translations of the interview in French coming up at 1 minutes and 45 seconds.',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+          start: 51, // seconds
+          end: 66, // seconds
+          text: 'Please note: This is the view looking to the right.',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	104, // seconds
+					end: 	105, // seconds
+					text: '	JT: 	Hello!	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	105, // seconds
+					end: 	107, // seconds
+					text: '	BC: 	Hello!	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	107, // seconds
+					end: 	110, // seconds
+					text: '	JT: 	What is your name?	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	110, // seconds
+					end: 	111, // seconds
+					text: '	BC: 	Bernard Constant.	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	111, // seconds
+					end: 	116, // seconds
+					text: '	JT: 	How many years you play here.	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	116, // seconds
+					end: 	117, // seconds
+					text: '	BC: 	How long?	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	117, // seconds
+					end: 	118, // seconds
+					text: '	JT: 	Yes.	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	118, // seconds
+					end: 	125, // seconds
+					text: '	BC: 	Oh, it\'s been at least five years.	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	126, // seconds
+					end: 	129, // seconds
+					text: '	JT: 	How many instruments you play?	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	130, // seconds
+					end: 	140, // seconds
+					text: '	BC: 	I play the piano, the accordion, trumpet, trombone, the harmonica, the drums and I sing.	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	143, // seconds
+					end: 	148, // seconds
+					text: '	JT: 	Why you choose this place?	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	149, // seconds
+					end: 	166, // seconds
+					text: '	BC: 	It\'s calm. I can park my car. And there\'s no neighbors. I don\'t bother anyone and I can play and sing at the volume that I want.	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	168, // seconds
+					end: 	171, // seconds
+					text: '	JT: 	You like the sound with the bridge?	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	172, // seconds
+					end: 	175, // seconds
+					text: '	BC: 	Yes, the acoustics are very good and it\'s a tourist spot.	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	177, // seconds
+					end: 	182, // seconds
+					text: '	JT: 	How many hour you play in a day?	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	183, // seconds
+					end: 	187, // seconds
+					text: '	BC: 	At the most, four hours.  From 2pm until 6 in the evening.	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	188, // seconds
+					end: 	191, // seconds
+					text: '	JT: 	When you arrive today?	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	192, // seconds
+					end: 	202, // seconds
+					text: '	BC: 	I arrive around 2 oclock.  I have my coffee in a bistro and then after I play, calm like a retiree.	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	203, // seconds
+					end: 	205, // seconds
+					text: '	JT: 	It\'s a good job!	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	206, // seconds
+					end: 	209, // seconds
+					text: '	BC: 	It\'s a great job for a retiree.	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	212, // seconds
+					end: 	222, // seconds
+					text: '	JT: 	I would like to listen to your music.  Could you play an original song?	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	223, // seconds
+					end: 	224, // seconds
+					text: '	BC: 	Yes. No problem.	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.subtitle({
+					start: 	224, // seconds
+					end: 	226, // seconds
+					text: '	JT: 	Thank you.	',
+          display: 'inline',
+          target: 'subtitlediv',
+          language: "en"
+        });
+        popcorn.footnote({
+          start: 0, // seconds
+          end: 600, // seconds
+          text: 'Take a walk in Paris, France with independent radio producer John Tynan and discover one of the city\'s hidden musical secrets along the Seine.',
+          target: 'footnotediv'
+        })
+        .image({
+          start: 0, // seconds
+          end: 12, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_8872.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 12, // seconds
+          end: 23, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/me.jpg',
+          target: 'imagediv'
+        })
+        .image({
+          start: 23, // seconds
+          end: 32, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1627.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 32, // seconds
+          end: 38, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1636.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 38, // seconds
+          end: 45, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1639.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 45, // seconds
+          end: 50, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1642.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 50, // seconds
+          end: 66, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1643.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 66, // seconds
+          end: 75, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1645.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 75, // seconds
+          end: 90, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1647.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 90, // seconds
+          end: 97, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1663.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 97, // seconds
+          end: 105, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1648.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 105, // seconds
+          end: 120, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1650.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 120, // seconds
+          end: 130, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1653.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 130, // seconds
+          end: 144, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1656.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 144, // seconds
+          end: 169, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1667.JPG',
+          target: 'imagediv'
+        })
+        .image({
+         	start: 	169, // seconds
+          end: 	178, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1666.JPG',
+          target: 'imagediv'
+        })
+        .image({
+         	start: 	178, // seconds
+          end: 	190, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1658.JPG',
+          target: 'imagediv'
+        })
+        .image({
+         	start: 	190, // seconds
+          end: 	202, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1659.JPG',
+          target: 'imagediv'
+        })
+        .image({
+         	start: 	202, // seconds
+          end: 	228, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1654.JPG',
+          target: 'imagediv'
+        })
+        .image({
+         	start: 	228, // seconds
+          end: 	304, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1648.JPG',
+          target: 'imagediv'
+        })
+
+        .video.registerPopcornWithPlayer( popcorn );
+      }, false);
+    </script>
+  </head>
+  <body>
+    <div style="border:1px solid black; width:100%">
+      <span style="float:left; width:85%">
+        <!-- Series Index --> &nbsp;
+      </span>
+      <span style="align:right;right:0px;">
+        <button class="volume" id="btnMute">Mute</button><!-- Full&nbsp;Screen -->
+      </span>
+
+<div>
+<strong>Bernard Constant</strong><br />
+Take a walk in Paris, France with independent radio producer John Tynan and discover one of the city's hidden musical secrets along the Seine.
+</div>
+
+
+      <div id="imagediv" align="center">
+        <div id="subtitlediv" width="500px" height="200px">
+        </div>
+      </div>
+      <div id="media_1" align="center">
+      </div>
+
+    </div>
+      
+    <div style="visibility:hidden">
+      <button class="simple" id="btnPlay">Play</button>
+      <button class="simple" id="btnPause">Pause</button>
+      <button class="seek" id="btnSeek">Seek to 30</button>
+      <button class="volume" id="btnVolume">Toggle Volume</button>
+      <button class="volume" id="btnMute">Mute</button><br />
+      
+      <div style="float: left;">
+        Current Time (s): <span id="media_currentTime"></span>
+        <br />Duration (s): <span id="media_duration"></span>
+        <br />Volume (0-1): <span id="media_volume"></span>
+        <br />Ready State: <span id="media_readyState">0</span>
+      </div>
+      <div style="position: absolute; left: 350px;">
+        <strong>Comment Area</strong>
+        <div id="commentDisplay"></div>
+      </div>
+      
+    </div>
+    <div style="float:right; width: 100%; visibility: hidden">
+      <div id="footnotediv" width="50%" height="50%">
+        <strong>Footnote Area</strong><br />
+      </div>
+      <div id="attribdiv" width="50%" height="50%">
+        <strong>Attributions Area</strong><br />
+      </div>
+      <div id="flickrdiv" width="50%" height="50%">
+        <strong>Flickr Area</strong><br />
+      </div>
+      <div id="twitterdiv" width="50%" height="50%">
+        <strong>Twitter Area</strong><br />
+      </div>
+      <div id="imagediv" width="50%" height="50%">
+        <strong>Image Area</strong><br />
+      </div>
+      <div id="feeddiv" width="50%" height="50%">
+        <strong>Google Feed Area</strong><br />
+      </div>
+      <div id="webpagediv" width="100px" height="50px">
+        <strong>Web Page Area</strong><br />
+      </div>
+    </div>
+    
+    <br />
+    <br />
+  </body>
+</html>
+
