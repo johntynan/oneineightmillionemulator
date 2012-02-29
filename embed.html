@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html lang="en">
+<head>
+<title>Embed One in 8 Million Emulator</title>
+
+<script language="JavaScript" type="text/javascript">
+function writeToForm() {
+
+var query = window.location.search;
+query = query.substr(1);
+// alert(query);
+
+widgetAddress = "http:\/\/johntynan.com\/presentations\/popcorn\/oneineightmillionemulator\/?";
+
+iframeString = widgetAddress + query;
+
+iframe = "\<iframe src =\"" + iframeString + "\" " + "height=\"100\%\" width=\"100\%\" scrolling=\"No\" frameborder=\"0\"\>\<\/iframe\>";
+
+document.codeForm.code.value = iframe;
+
+document.getElementById('urlForEmail').innerHTML = iframeString;
+
+}
+</script>
+</head>
+<body onLoad="writeToForm();">
+<h2>Embed Code</h2>
+<form id="codeForm" name="codeForm">
+<p>Copy the code in the text box below to place this presentation on your blog or web page:</p>
+<textarea id="code" name="code" rows="10" cols="50"></textarea>
+</form>
+
+<h2>URL</h2>
+<p>You can also use this url alone to link to the presentation, or send a presentation through email:</p>
+<div name="urlForEmail" id="urlForEmail"></div>
+</body>
+</html>

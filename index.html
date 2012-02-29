@@ -71,6 +71,42 @@
      );
   	</script>
 
+    <script type="text/javascript" language="JavaScript"> 
+    <!-- //
+     
+    var query = window.location.search;
+    query = query.substr(1);
+    // alert(query);
+    function embedThis(){
+      
+    embedAddress = "http://johntynan.com/presentations/popcorn/oneineightmillionemulator/embed.html?";
+    embedAddress = embedAddress + query;
+    // alert(embedAddress);
+      
+    embedString = "Embed This";
+    // alert(embedString);
+      
+    document.getElementById('linkToEmbed').innerHTML = embedString;
+    document.getElementById('linkToEmbed').href = embedAddress;
+    document.getElementById('linkToEmbed').target = "_top";
+      
+      
+    shareAddress = document.location.href;
+    // alert(shareAddress);
+      
+    shareString = "Link to This";
+    // alert(shareString);
+      
+    document.getElementById('linkToShare').innerHTML = shareString;
+    document.getElementById('linkToShare').href = shareAddress;
+    document.getElementById('linkToShare').target = "_top";
+      
+    return;
+      
+    }
+    // -->
+    </script> 
+
     <!-- Plugins for demo purposes -->
     <script src="../../../scripts/popcorn-js/plugins/footnote/popcorn.footnote.js"></script>
     <script src="../../../scripts/popcorn-js/plugins/flickr/popcorn.flickr.js"></script>
@@ -509,10 +545,10 @@
       }, false);
     </script>
   </head>
-  <body>
+  <body onLoad="embedThis();"> 
     <div style="border:1px solid black; width:100%">
       <span style="float:left; width:85%">
-        <!-- Series Index --> &nbsp;
+        <a href="" id="linkToShare"></a> | <a href="" id="linkToEmbed"></a>
       </span>
       <span style="align:right;right:0px;">
         <button class="volume" id="btnMute">Mute</button><!-- Full&nbsp;Screen -->
