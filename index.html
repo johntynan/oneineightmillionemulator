@@ -83,7 +83,7 @@
     embedAddress = embedAddress + query;
     // alert(embedAddress);
       
-    embedString = "Embed This";
+    embedString = "Share";
     // alert(embedString);
       
     document.getElementById('linkToEmbed').innerHTML = embedString;
@@ -187,7 +187,7 @@
             document.getElementById( "media_volume" ).innerHTML = popcorn.volume();
           });
           
-          // popcorn.trigger( "play" );
+          popcorn.trigger( "play" );
         });
         
         // Empty for the purposes of allowing popcorn.trigger("play");
@@ -548,7 +548,7 @@
   <body onLoad="embedThis();"> 
     <div style="border:1px solid black; width:100%">
       <span style="float:left; width:85%">
-        <a href="" id="linkToShare"></a> | <a href="" id="linkToEmbed"></a>
+        <!--- <a href="" id="linkToShare"></a> | --><a href="" id="linkToEmbed"></a>
       </span>
       <span style="align:right;right:0px;">
         <button class="volume" id="btnMute">Mute</button><!-- Full&nbsp;Screen -->
