@@ -81,31 +81,32 @@
       
     embedAddress = "http://johntynan.com/presentations/popcorn/oneineightmillionemulator/embed.html?";
     embedAddress = embedAddress + query;
-    // alert(embedAddress);
-      
-    embedString = "Share";
-    // alert(embedString);
-      
-    document.getElementById('linkToEmbed').innerHTML = embedString;
-    document.getElementById('linkToEmbed').href = embedAddress;
-    document.getElementById('linkToEmbed').target = "_top";
-      
+    // alert(embedAddress);      
       
     shareAddress = document.location.href;
     // alert(shareAddress);
       
-    shareString = "Link to This";
-    // alert(shareString);
-      
-    document.getElementById('linkToShare').innerHTML = shareString;
-    document.getElementById('linkToShare').href = shareAddress;
-    document.getElementById('linkToShare').target = "_top";
-      
     return;
       
     }
+
+    function openEmbedWindow() {
+      window.open(embedAddress);
+    }
+
+    function openFullScreen() {
+      params  = 'width='+screen.width;
+      params += ', height='+screen.height;
+      params += ', top=0, left=0'
+      params += ', fullscreen=yes';
+      newwin=window.open(shareAddress,document.title, params);
+      if (window.focus) {newwin.focus()}
+      return false;
+    }
+
     // -->
     </script> 
+
 
     <!-- Plugins for demo purposes -->
     <script src="../../../scripts/popcorn-js/plugins/footnote/popcorn.footnote.js"></script>
@@ -411,7 +412,7 @@
           start: 12, // seconds
           end: 23, // seconds
           href: '',
-          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/me.jpg',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_9629.JPG',
           target: 'imagediv'
         })
         .image({
@@ -444,26 +445,39 @@
         })
         .image({
           start: 50, // seconds
-          end: 66, // seconds
+          end: 62, // seconds
           href: '',
           src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1643.JPG',
           target: 'imagediv'
         })
         .image({
-          start: 66, // seconds
-          end: 75, // seconds
+          start: 62, // seconds
+          end: 68, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1181.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 68, // seconds
+          end: 72, // seconds
           href: '',
           src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1645.JPG',
           target: 'imagediv'
         })
         .image({
-          start: 75, // seconds
+          start: 72, // seconds
+          end: 76, // seconds
+          href: '',
+          src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_8898.JPG',
+          target: 'imagediv'
+        })
+        .image({
+          start: 76, // seconds
           end: 90, // seconds
           href: '',
           src: 'http://johntynan.com/presentations/popcorn/bernardconstant/images/IMG_1647.JPG',
           target: 'imagediv'
-        })
-        .image({
+        })        .image({
           start: 90, // seconds
           end: 97, // seconds
           href: '',
@@ -547,11 +561,14 @@
   </head>
   <body onLoad="embedThis();"> 
     <div style="border:1px solid black; width:100%">
-      <span style="float:left; width:85%">
-        <!--- <a href="" id="linkToShare"></a> | --><a href="" id="linkToEmbed"></a>
+      <span style="float:right;">
+        <form style="float:right;">
+          <input type="button" value="Full Screen" id="fullScreenButton" onClick="openFullScreen()">
+          <input type="button" value="Share" id="embedButton" onClick="openEmbedWindow()">
+        </form>
+      <span>
+        <button class="volume" id="btnMute">Mute</button>
       </span>
-      <span style="align:right;right:0px;">
-        <button class="volume" id="btnMute">Mute</button><!-- Full&nbsp;Screen -->
       </span>
 
 <div>
